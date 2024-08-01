@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import './Pokemon.css'
+// import './Pokemon.css'
 import { Cards } from "./Cards";
 import useFetchWithMemo from './useFetchWithMemo';
 
@@ -57,22 +57,27 @@ export const ApiData = () => {
   }
   return (
     <>
-      <section className="container">
+    {/* max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl */}
+      <section className="flex flex-col gap-4 h-32 w-96 bg-lime-200 m-auto rounded-2xl opacity-90 max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl">
         <header>
-          <h1>Let's Catch Pokemon</h1>
+          <h1 className="h-full w-30 text-center m-auto text-xl font-bold">Let's Catch Pokemon</h1>
         </header>
         <input
           type="text"
           placeholder="Search pokemon"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="m-auto flex text-center h-auto w-auto cursor-pointer rounded-md placeholder:text-blue-200 placeholder:font-thin
+          text-blue-900 font-bold after:opacity-85"
         />
       </section>
       {/* Cards */}
-      <div>
-        <ul className="cards">
+      {/* grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 */}
+      <div className="h-full w-full">
+        <ul className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center justify-items-center bg-pink-100 rounded-xl">
           {searchData.map((currPokemon) => {
-            return <Cards key={currPokemon.id} pokeData={currPokemon} />;
+            return <Cards key={currPokemon.id} pokeData={currPokemon}
+           />;
           })}
         </ul>
       </div>
